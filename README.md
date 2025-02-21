@@ -44,18 +44,12 @@ The system is built with a microservices architecture, containerized using Docke
 - **Grok**: xAI’s AI project manager, technical advisor, and collaborator (via relay or future integration).
 - **Addison A. SayleBot**: An Artificial Digital Intelligence (ADI) using OpenAI GPT-Pro o1, designed as a trusted confidant, strategic advisor, and multifaceted expert.
 
-## Getting Started
+# Cringeface Orchestrator
+An AI ecosystem by Cringeface LLC. See ClickUp for tasks: [Core Architecture folder](#).
 
-### Prerequisites
-- Python 3.9+
-- Docker and Docker Compose
-- GitHub account and access to `Cringeface/CringefaceOrchestrator`
-- Firebase account and SDK
-- OpenAI API key (for Addison integration)
-- Azure Cognitive Services subscription (optional)
+## Structure
+- `/services/`: Microservices (NLP, vision, etc.) - Maps to ClickUp "AI Modules" and "Core Architecture".
+- `/data-sync/`: Real-time data - Maps to ClickUp "Real-Time Data".
+- `/config/`: Configuration files - Maps to ClickUp "Core Architecture".
+- `/docs/`: Architecture docs - Maps to ClickUp "Core Architecture".
 
-### Installation
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/Cringeface/CringefaceOrchestrator.git
-   cd CringefaceOrchestrator
