@@ -33,3 +33,10 @@
 - **Outputs**: Synced data to all services/chat.
 - **Tech**: Python, Firebase (Firestore/Realtime Database), REST.
 - **Status**: Defined on Feb 21, 2025. See `/data-sync/`.
+
+## Custom Chat App Service
+- **Purpose**: Real-time human-AI chat and collaboration.
+- **Inputs**: User inputs, all service outputs.
+- **Outputs**: Chat messages, synced data.
+- **Tech**: Python, FastAPI, Firebase, OpenAI, optional frontend.
+- **Status**: Defined on Feb 21, 2025. See `/services/chat-app/`.
