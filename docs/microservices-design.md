@@ -20,3 +20,10 @@
 - **Tech**: Python, Azure Speech, Whisper, Firebase.
 - **Status**: Defined on Feb 21, 2025. See `/services/audio-recognition/`.
 
+## Speech Synthesis Service
+- **Purpose**: Text-to-speech conversion for voice outputs.
+- **Inputs**: Text from NLP/chat, Firebase context.
+- **Outputs**: Audio to chat/data sync.
+- **Tech**: Python, Azure TTS, gTTS, Firebase.
+- **Status**: Defined on Feb 21, 2025. See `/services/speech-synthesis/`.
+
