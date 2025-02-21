@@ -27,3 +27,9 @@
 - **Tech**: Python, Azure TTS, gTTS, Firebase.
 - **Status**: Defined on Feb 21, 2025. See `/services/speech-synthesis/`.
 
+## Real-Time Data Sync Service
+- **Purpose**: Real-time data sync across services/users.
+- **Inputs**: Data from all services, chat inputs.
+- **Outputs**: Synced data to all services/chat.
+- **Tech**: Python, Firebase (Firestore/Realtime Database), REST.
+- **Status**: Defined on Feb 21, 2025. See `/data-sync/`.
