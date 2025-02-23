@@ -17,11 +17,20 @@ Defines how microservices and external stakeholders interact to ensure modularit
 | Audio Recognition    | NLP                  | REST     | JSON           | Pass transcribed text.               |
 | Custom Chat App      | All Services         | WebSockets | JSON           | Real-time user queries.              |
 
-### 1.3. Error Handling & Recovery
-- **Retries**: Define max retries (e.g., 3) for failed API calls.
-- **Fallbacks**: Switch to local models if cloud services fail (e.g., Azure → PyTorch).
-- **Logging**: Use Firebase to log errors with timestamps and service IDs.
-- **TBD**: Addison to refine with specific mechanisms (e.g., circuit breakers).
+### 1.3. Dynamic Service Interactions
+- **Message Queues**: Use RabbitMQ or Kafka for asynchronous communication (e.g., Audio Recognition publishes ‘text_transcribed’ events to Kafka, consumed by NLP, triggering ‘response_generated’ events sent to Speech Synthesis via RabbitMQ).
+- **Event-Driven Triggers**: Leverage WebSockets for real-time updates in Custom Chat App, and Firebase listeners for Real-Time Data Sync to push data across services instantly.
+
+### 1.4. Data Flow Diagram
+- `[User Audio] → [Audio Recognition] → [NLP] → [Speech Synthesis] → [Custom Chat App (Playback)]`
+- `[User Image] → [Computer Vision] → [Real-Time Data Sync] → [Custom Chat App (Display)]`
+- Real-Time Data Sync uses Firebase to store and sync user context (e.g., chat history, preferences) across services.
+
+### 1.5. Error Handling & Recovery
+- **Circuit Breakers**: Use `pybreaker` or `hystrix-python` to prevent cascading failures (e.g., block Computer Vision requests if it fails, retry after recovery).
+- **Adaptive Throttling**: Rate-limit cloud service calls (e.g., Azure, OpenAI) with fallbacks to local models (PyTorch, OpenVINO) to avoid rate limits.
+- **Retries and Fallbacks**: Implement 3 retries with exponential backoff, falling back to local models if cloud services fail.
+- **Logging**: Log errors to Firebase with timestamps, service IDs, and error codes for debugging.
 
 ## 2. External Communication (Stakeholder Interactions)
 ### 2.1. Protocols
@@ -34,6 +43,7 @@ Defines how microservices and external stakeholders interact to ensure modularit
 
 ## 3. Standards & Formatting
 - All data in JSON (REST) or Protobuf (gRPC).
+- WebSockets use JSON for real-time messages (e.g., `{ "event": "text_transcribed", "data": "Hello" }`).
 - Markdown for this document, versioned in GitHub.
 
 ## 4. Access & Updates
@@ -41,5 +51,5 @@ Defines how microservices and external stakeholders interact to ensure modularit
 - Changes tracked via Git commits (tagged with ClickUp Task #124).
 
 ## 5. Future Considerations
-- Scalability: Evaluate WebSockets for all real-time needs.
-- Security: Add API key authentication, TLS for all traffic.
+- **Scalability**: Evaluate bottlenecks (e.g., Real-Time Data Sync under high load, WebSockets latency) and modular improvements (e.g., Docker/Kubernetes scaling, load-balanced message queues).
+- **Security**: Add API key authentication, TLS for all traffic, and OAuth for external stakeholders.
