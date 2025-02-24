@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-cred = credentials.Certificate("C:/PyDEV/CringefaceOrchestrator/config/firebase_key.json")
+cred = credentials.Certificate("C:/PyDEV/CringefaceOrchestrator/config/cringeface001-firebase-adminsdk-fbsvc-06e6a1fd42.json")
 firebase_admin.initialize_app(cred, {"projectId": "cringeface001"})
 
 db = firestore.client()
